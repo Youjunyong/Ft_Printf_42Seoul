@@ -1,0 +1,9 @@
+{
+	"files.associations": {
+		"__threading_support": "c",
+		"atomic": "c",
+		"mutex": "c",
+		"libftprintf.h": "c",
+		"ios": "c"
+	}
+}
