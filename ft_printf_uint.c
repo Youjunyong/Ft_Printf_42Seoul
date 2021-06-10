@@ -6,7 +6,7 @@
 /*   By: juyou <juyou@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/10 00:25:53 by juyou             #+#    #+#             */
-/*   Updated: 2021/06/10 12:00:11 by juyou            ###   ########.fr       */
+/*   Updated: 2021/06/10 12:18:48 by juyou            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,11 +57,11 @@ char	*ft_utoa(unsigned int num, int buf, int radix)
 	return (list);
 }
 
-int	ft_uint(va_list ptr, int buf, int flag, struct s_flags flags)
+int	ft_uint(va_list ap, int buf, int flag, struct s_flags flags)
 {
 	char *list;
 
-	list = ft_utoa(va_arg(ptr, unsigned int), buf, flag);
+	list = ft_utoa(va_arg(ap, unsigned int), buf, flag);
 	flags.str_len = ft_strlen(list);
 	if (flags.precision == 0 && flags.dot && list[0] == '0')
 		flags.str_len--;
