@@ -6,15 +6,15 @@
 /*   By: juyou <juyou@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/08 16:40:11 by juyou             #+#    #+#             */
-/*   Updated: 2021/06/10 12:04:57 by juyou            ###   ########.fr       */
+/*   Updated: 2021/06/10 14:16:35 by juyou            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int ft_precision(const char **format, va_list ap, struct s_flags *flag)
+int	ft_prec(const char **format, va_list ap, struct s_flags *flag)
 {
-	int precision;
+	int	precision;
 
 	precision = 0;
 	flag->dot = 1;
@@ -33,5 +33,4 @@ int ft_precision(const char **format, va_list ap, struct s_flags *flag)
 			(*format)++;
 	}
 	return (precision);
-
 }

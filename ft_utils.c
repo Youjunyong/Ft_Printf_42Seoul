@@ -6,12 +6,11 @@
 /*   By: juyou <juyou@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/08 15:22:44 by juyou             #+#    #+#             */
-/*   Updated: 2021/06/10 12:00:13 by juyou            ###   ########.fr       */
+/*   Updated: 2021/06/10 14:29:55 by juyou            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-
 
 static int	numeric(int sym)
 {
@@ -53,20 +52,19 @@ int			ft_itoa(int c, struct s_flags flag)
 		i--;
 	}
 	str[i] = (char)number + '0';
-	i = ft_printf_int(str, flag); 
+	i = ft_printf_int(str, flag);
 	free(str);
 	return (i);
 }
 
-int	ft_isdigit(int c)
+int			ft_isdigit(int c)
 {
 	if (c >= '0' && c <= '9')
 		return (1);
 	return (0);
 }
 
-
-int	ft_atoi(const char *s)
+int			ft_atoi(const char *s)
 {
 	unsigned long	num;
 	short			sign;
@@ -95,15 +93,15 @@ int	ft_atoi(const char *s)
 	return (num * sign);
 }
 
-int	ft_strlen(const char *s)
+int			ft_strlen(const char *s)
 {
 	int len;
 
 	len = 0;
 	while (*s)
 	{
-		len ++;
-		s++;		
+		len++;
+		s++;
 	}
 	return (len);
 }

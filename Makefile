@@ -5,15 +5,13 @@
 #                                                     +:+ +:+         +:+      #
 #    By: juyou <juyou@student.42seoul.kr>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2020/07/24 16:37:37 by tsecret           #+#    #+#              #
+#    Created: 2021/06/07 16:37:37 by juyou           #+#    #+#              #
 #    Updated: 2021/06/10 00:38:52 by juyou            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CC = gcc
 NAME = libftprintf.a
-
-
 CFALGS = -Wall -Werror -Wextra
 SRC = ft_printf.c ft_precision.c ft_flag.c\
 	 ft_printf_c.c ft_utils.c ft_width.c\
@@ -25,8 +23,6 @@ OBJS = $(SRC:.c=.o)
 all : $(NAME)
 
 $(NAME) : $(OBJS)
-
-
 	ar cr $@ $(OBJS)
 
 %.o : %.c ft_printf.h

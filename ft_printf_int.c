@@ -6,13 +6,13 @@
 /*   By: juyou <juyou@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/09 17:01:58 by juyou             #+#    #+#             */
-/*   Updated: 2021/06/10 12:05:36 by juyou            ###   ########.fr       */
+/*   Updated: 2021/06/10 14:00:23 by juyou            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int							check_num(char **str)
+int		check_num(char **str)
 {
 	int size;
 
@@ -25,30 +25,30 @@ int							check_num(char **str)
 	return (size);
 }
 
-int ft_printf_int(char *str, struct s_flags flag)
+int		ft_printf_int(char *str, struct s_flags flags)
 {
-	int len;
+	int	len;
 
-	if (str[0] == '0' && !flag.precision && flag.dot)
+	if (str[0] == '0' && !flags.precision && flags.dot)
 		str[0] = '\0';
-	flag.str_len = ft_strlen(str);
-	if (flag.precision && flag.precision > flag.str_len && !flag.width)
-		len = flag.precision - flag.str_len;
-	else if (flag.precision && flag.width && flag.precision > flag.str_len)
-		len = flag.width - flag.precision;
+	flags.str_len = ft_strlen(str);
+	if (flags.precision && flags.precision > flags.str_len && !flags.width)
+		len = flags.precision - flags.str_len;
+	else if (flags.precision && flags.width && flags.precision > flags.str_len)
+		len = flags.width - flags.precision;
 	else
-		len = flag.width - flag.str_len;
-	if (str[0] == '-' && flag.precision >= flag.str_len)
+		len = flags.width - flags.str_len;
+	if (str[0] == '-' && flags.precision >= flags.str_len)
 		len--;
-	if (flag.width && (!flag.zero || flag.dot) && !flag.minus)
-		flag.size += ft_align(' ', len);
-	if (flag.zero && !flag.minus && !flag.dot)
-		flag.size += check_num(&str) + ft_align('0', len);
-	if (flag.precision >= flag.str_len && flag.dot)
-		flag.size += check_num(&str) + ft_align('0',
-		flag.precision - ft_strlen(str));
-	flag.size += print_str(str, ft_strlen(str));
-	if (flag.width && flag.minus)
-		flag.size += ft_align(' ', len);
-	return (flag.size);
+	if (flags.width && (!flags.zero || flags.dot) && !flags.minus)
+		flags.size += ft_align(' ', len);
+	if (flags.zero && !flags.minus && !flags.dot)
+		flags.size += check_num(&str) + ft_align('0', len);
+	if (flags.precision >= flags.str_len && flags.dot)
+		flags.size += check_num(&str) + ft_align('0',
+		flags.precision - ft_strlen(str));
+	flags.size += print_str(str, ft_strlen(str));
+	if (flags.width && flags.minus)
+		flags.size += ft_align(' ', len);
+	return (flags.size);
 }
