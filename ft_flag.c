@@ -6,7 +6,7 @@
 /*   By: juyou <juyou@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/08 15:47:13 by juyou             #+#    #+#             */
-/*   Updated: 2021/06/10 02:22:29 by juyou            ###   ########.fr       */
+/*   Updated: 2021/06/10 12:04:49 by juyou            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ struct s_flags ft_flag_init(void)
 	struct s_flags flag;
 
 	flag.minus = 0;
-	flag.count = 0;
+	flag.size = 0;
 	flag.zero = 0;
 	flag.dot = 0;
 	flag.width = 0;
@@ -50,16 +50,12 @@ struct s_flags	parse_flag(const char **format, va_list ap)
 	{
 		if(**format == '-')
 			flag.minus = 1;
-//warning: flag '0' is ignored when flag '-' is present [-Wformat]
-//왼쪽 정렬(-) 일때는 0을 채울수 없다.
 		else if (**format == '0' && !flag.minus)
 			flag.zero = 1;
 
 
 		else if (**format == '.' && !flag.dot)
 			flag.precision = ft_precision(&(*format), ap, &flag);
-
-		//숫자 혹은 애스터마스크가 나온다면 폭
 		else if (ft_isdigit(**format) || **format == '*')
 			flag.width = ft_width(&(*format), ap, &flag);
 		else

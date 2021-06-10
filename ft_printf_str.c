@@ -6,7 +6,7 @@
 /*   By: juyou <juyou@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/09 15:02:47 by juyou             #+#    #+#             */
-/*   Updated: 2021/06/09 16:32:54 by juyou            ###   ########.fr       */
+/*   Updated: 2021/06/10 12:00:10 by juyou            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,19 +39,19 @@ int ft_printf_str(char *str, struct s_flags flag)
 
 		// 오른쪽 정렬 + 0없고 + 폭이 있다면 - > 폭을 len만큼 출력
 	if (!flag.minus && !flag.zero && flag.width > 0)
-		flag.count += ft_align(' ', b_len);
+		flag.size += ft_align(' ', b_len);
 		// 0이 있고, 오른쪽 정렬이라면 len 만큼 0을 출력
 	if (flag.zero && !flag.minus)
-		flag.count += ft_align('0', b_len);
+		flag.size += ft_align('0', b_len);
 
 // str출력부
 		// .이 있으면 -> 정밀도만큼 str출력
 	if (flag.dot)
-		(flag.count += print_str(str, flag.precision));
+		(flag.size += print_str(str, flag.precision));
 		// 정밀도가 없다면 str_len 만큼 출력
 	else
-		(flag.count += print_str(str, flag.str_len));
+		(flag.size += print_str(str, flag.str_len));
 	if (flag.minus )
-		flag.count += ft_align(' ', b_len);
-	return (flag.count);
+		flag.size += ft_align(' ', b_len);
+	return (flag.size);
 }

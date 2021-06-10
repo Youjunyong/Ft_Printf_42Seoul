@@ -6,7 +6,7 @@
 /*   By: juyou <juyou@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/10 00:25:53 by juyou             #+#    #+#             */
-/*   Updated: 2021/06/10 00:43:30 by juyou            ###   ########.fr       */
+/*   Updated: 2021/06/10 12:00:11 by juyou            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,18 +66,18 @@ int	ft_uint(va_list ptr, int buf, int flag, struct s_flags flags)
 	if (flags.precision == 0 && flags.dot && list[0] == '0')
 		flags.str_len--;
 	if (flags.width && !flags.minus && !flags.dot && !flags.zero)
-		flags.count += ft_align(' ', flags.width - flags.str_len);
+		flags.size += ft_align(' ', flags.width - flags.str_len);
 	else if (flags.width && (flags.dot || !flags.zero) && !flags.minus)
-		flags.count += ft_align(' ', flags.precision >= flags.str_len
+		flags.size += ft_align(' ', flags.precision >= flags.str_len
 		? flags.width - flags.precision : flags.width - flags.str_len);
 	if (flags.zero && !flags.minus && flags.width && !flags.dot)
-		flags.count += ft_align('0', flags.width - flags.str_len);
+		flags.size += ft_align('0', flags.width - flags.str_len);
 	if (flags.dot)
-		flags.count += ft_align('0', flags.precision - flags.str_len);
-	flags.count += print_str(list, flags.str_len);
+		flags.size += ft_align('0', flags.precision - flags.str_len);
+	flags.size += print_str(list, flags.str_len);
 	if (flags.minus)
-		flags.count += ft_align(' ', flags.precision >= flags.str_len
+		flags.size += ft_align(' ', flags.precision >= flags.str_len
 		? flags.width - flags.precision : flags.width - flags.str_len);
 	free(list);
-	return (flags.count);
+	return (flags.size);
 }
