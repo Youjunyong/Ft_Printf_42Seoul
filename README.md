@@ -1,5 +1,6 @@
 
-![image](https://user-images.githubusercontent.com/46234386/121765959-8a871a00-cb89-11eb-89e3-63151d592418.png)
+![image](https://user-images.githubusercontent.com/46234386/121765968-9d015380-cb89-11eb-93d8-ebeadefca453.png)
+
 
 # ft_printf
 
