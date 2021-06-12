@@ -1,5 +1,6 @@
 
-![image](https://user-images.githubusercontent.com/46234386/121765984-c3bf8a00-cb89-11eb-83b2-85efcc5e993c.png)
+![image](https://user-images.githubusercontent.com/46234386/121766053-506a4800-cb8a-11eb-8ef1-30f57a6da9f5.png)
+
 
 
 
@@ -38,4 +39,4 @@
 ##   
 
 
-https://infinitt.tistory.com/manage/newpost/334
+https://infinitt.tistory.com/334
