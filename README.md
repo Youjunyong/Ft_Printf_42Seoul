@@ -1,6 +1,7 @@
-# ft_printf
 
-[##_Image|kage@bFwTE3/btq5VxSOBeF/vDlJUP8x5lxspfoNdDCzqk/img.png|alignCenter|data-origin-width="1238" data-origin-height="1716" width="527" height="730" data-ke-mobilestyle="widthOrigin"|||_##]
+![image](https://user-images.githubusercontent.com/46234386/121765959-8a871a00-cb89-11eb-89e3-63151d592418.png)
+
+# ft_printf
 
 ## Summary && Introduction
 
