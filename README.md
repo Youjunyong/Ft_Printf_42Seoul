@@ -1,5 +1,6 @@
 
-![image](https://user-images.githubusercontent.com/46234386/121765968-9d015380-cb89-11eb-93d8-ebeadefca453.png)
+![image](https://user-images.githubusercontent.com/46234386/121765984-c3bf8a00-cb89-11eb-83b2-85efcc5e993c.png)
+
 
 
 # ft_printf
@@ -22,7 +23,9 @@
 
 ## Mandatory part
 
-[##_Image|kage@bGTlMD/btq5REkHHCI/6dobcvws1JJrvP4FFIENM0/img.png|alignCenter|data-origin-width="1221" data-origin-height="336" data-ke-mobilestyle="widthOrigin"|||_##]
+![image](https://user-images.githubusercontent.com/46234386/121765990-d89c1d80-cb89-11eb-854e-d5730de19120.png)
+
+
 
 -   ft\_printf의 원형은 반드시 `int ft_printf(const char *, ...)`로해라.
 -   C표준 라이브러리(libc)의 printf 함수를 recode해야한다.
@@ -33,3 +36,6 @@
 -   `ar` 커맨드를 사용하여 라이브러리를 만들어라. `libtool`은 금지되어있다.
 
 ##   
+
+
+https://infinitt.tistory.com/manage/newpost/334
