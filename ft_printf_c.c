@@ -6,11 +6,12 @@
 /*   By: juyou <juyou@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/08 17:10:34 by juyou             #+#    #+#             */
-/*   Updated: 2021/06/10 13:58:25 by juyou            ###   ########.fr       */
+/*   Updated: 2021/06/10 12:05:14 by juyou            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+#include <stdio.h>
 
 int	print_char(char c)
 {

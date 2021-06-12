@@ -6,41 +6,52 @@
 /*   By: juyou <juyou@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/09 15:02:47 by juyou             #+#    #+#             */
-/*   Updated: 2021/06/10 14:58:34 by juyou            ###   ########.fr       */
+/*   Updated: 2021/06/12 14:16:52 by juyou            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int		print_str(char *str, int len)
+int	print_str(char *str, int len)
 {
 	if (len == 0)
 		return (0);
 	return (write(1, str, len));
 }
 
-int		ft_printf_str(char *str, struct s_flags flags)
+int ft_printf_str(char *str, struct s_flags flag)
 {
-	int	len;
+	int len; // 출력할 폭 길이
 
 	if (str == NULL)
 		str = "(null)";
-	flags.str_len = ft_strlen(str);
-	if (flags.precision && flags.precision > flags.str_len)
-		flags.precision = flags.str_len;
-	if (flags.dot && flags.precision < flags.str_len)
-		(len = flags.width - flags.precision);
+	flag.str_len = ft_strlen(str);
+	// 정밀도 > 문자열 크기 = 정밀도는 무시되고 문자열이 그대로 출력된다.
+	if (flag.precision && flag.precision > flag.str_len)
+		flag.precision = flag.str_len;
+
+	// 정밀도가 더 작다면, 정밀도 크기만큼만 출력한다.
+	if (flag.dot && flag.precision < flag.str_len) // dot체크는 왜 해애할까...
+		(len = flag.width - flag.precision);
+	// 그게 아니라면 
 	else
-		len = flags.width - flags.str_len;
-	if (!flags.minus && !flags.zero && flags.width > 0)
-		flags.size += ft_align(' ', len);
-	if (flags.zero && !flags.minus)
-		flags.size += ft_align('0', len);
-	if (flags.dot)
-		(flags.size += print_str(str, flags.precision));
+		len = flag.width - flag.str_len;
+
+		// 오른쪽 정렬 + 0없고 + 폭이 있다면 - > 폭을 len만큼 출력
+	if (!flag.minus && !flag.zero && flag.width > 0)
+		flag.size += ft_align(' ', len);
+		// 0이 있고, 오른쪽 정렬이라면 len 만큼 0을 출력
+	if (flag.zero && !flag.minus)
+		flag.size += ft_align('0', len);
+
+// str출력부
+		// .이 있으면 -> 정밀도만큼 str출력
+	if (flag.dot)
+		(flag.size += print_str(str, flag.precision));
+		// 정밀도가 없다면 str_len 만큼 출력
 	else
-		(flags.size += print_str(str, flags.str_len));
-	if (flags.minus)
-		flags.size += ft_align(' ', len);
-	return (flags.size);
+		(flag.size += print_str(str, flag.str_len));
+	if (flag.minus )
+		flag.size += ft_align(' ', len);
+	return (flag.size);
 }

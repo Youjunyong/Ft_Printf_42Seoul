@@ -6,24 +6,28 @@
 /*   By: juyou <juyou@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/09 17:42:34 by juyou             #+#    #+#             */
-/*   Updated: 2021/06/10 14:35:02 by juyou            ###   ########.fr       */
+/*   Updated: 2021/06/12 14:16:26 by juyou            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int						print_pointer(char *str, struct s_flags flags)
+int							print_pointer(char *str, struct s_flags flags)
 {
 	flags.str_len = ft_strlen(str);
-	if (flags.dot && str[2] == '0')
+	if (flags.dot && str[2] == '0') 
 		flags.str_len--;
 	if (flags.dot && flags.precision > flags.width)
 		flags.str_len -= 2;
 	if (flags.width && !flags.minus && !flags.zero && !flags.dot)
-		flags.size += ft_align(' ', flags.width - flags.str_len);
+			flags.size += ft_align(' ', flags.width - flags.str_len);
 	else if (flags.width && (flags.dot || !flags.zero) && !flags.minus)
-		flags.size = ft_align(' ', flags.str_len < flags.precision
-		? flags.width - flags.precision : flags.width - flags.str_len);
+	{
+		if (flags.str_len < flags.precision)
+			flags.size += ft_align(' ', flags.width - flags.precision);
+		else
+			flags.size += ft_align(' ', flags.width - flags.str_len);
+	}
 	if (flags.zero && flags.width && !flags.minus && !flags.dot)
 		flags.size += check_num(&str) +
 			ft_align('0', flags.width - flags.str_len);
@@ -37,7 +41,7 @@ int						print_pointer(char *str, struct s_flags flags)
 	return (flags.size);
 }
 
-static unsigned long	len_hex(unsigned long int nb)
+static unsigned long		len_hex(unsigned long int nb)
 {
 	size_t i;
 
@@ -50,7 +54,7 @@ static unsigned long	len_hex(unsigned long int nb)
 	return (i + 1);
 }
 
-size_t					ft_pointer(unsigned long ptrp, struct s_flags flags)
+size_t						ft_pointer(unsigned long ptrp, struct s_flags flag)
 {
 	size_t		i;
 	char		*str;
@@ -69,7 +73,7 @@ size_t					ft_pointer(unsigned long ptrp, struct s_flags flags)
 	}
 	str[i--] = 'x';
 	str[i] = '0';
-	i = print_pointer(str, flags);
+	i = print_pointer(str, flag);
 	free(str);
 	return (i);
 }
