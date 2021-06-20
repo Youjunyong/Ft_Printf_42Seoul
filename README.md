@@ -1,6 +1,6 @@
 # ft_printf
 
-<stdio.h> - printf 함수 구현하기 
+printf 함수 구현하기 
 
 ![image](https://user-images.githubusercontent.com/46234386/121766053-506a4800-cb8a-11eb-8ef1-30f57a6da9f5.png)
 
